@@ -3,8 +3,6 @@
 
 # todo-backend
 
-### Reference Documentation
-
 * Running the Application in local : ./gradlew build && java -jar build/libs/todo-0.0.1.jar
 * Docker Build: docker build --build-arg JAR_FILE=build/libs/\*.jar -t              todo-backend-docker .
                 docker build -t todo-backend-docker .
