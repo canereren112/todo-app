@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class = "navbar-nav">
+        <li class = "nav-item">
+            <a routerLink="tasks" routerLinkActive="active" class="nav-link" >Tasks</a>
+        </li>
+        <li class = "nav-item">
+            <a routerLink="create-task" routerLinkActive="active" class="nav-link" >Add Task</a>
+        </li>
+    </ul>
+</nav>
+
+
+<div class = "row">
+    <h2> Task List</h2>
+</div>
+
+<table class = "table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th> Description  </th>
+            <th> Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let task of tasks" >
+            <td> {{ task.title }} </td>
+            <td> {{ task.description }} </td>
+            <td>
+                <button (click) = "updateTask(task.id)" class = "btn btn-primary"> Update</button>
+                <button (click) = "deleteTask(task.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

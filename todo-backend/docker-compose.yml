@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:5.0.0-focal
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: caner
+      MONGO_INITDB_ROOT_PASSWORD: eren
+      ME_CONFIG_MONGODB_URL: mongodb://caner:eren@localhost:27017/admin
+
+  mongo-express:
+    image: mongo-express
+  #  restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: caner
+      ME_CONFIG_MONGODB_ADMINPASSWORD: eren
+      ME_CONFIG_MONGODB_URL: mongodb://caner:eren@localhost:27017/admin
+
+  backend:
+    build: ./
+    container_name: todo-backend-docker
+    environment:
+      - DB_SERVER:mongo
+      - MONGO_INITDB_ROOT_USERNAME=caner
+      - MONGO_INITDB_ROOT_PASSWORD=eren
+    ports:
+      - 8088:8088
+
+    depends_on:
+      - mongo
+
+

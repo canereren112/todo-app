@@ -1,0 +1,24 @@
+<div class = "row">
+    <h2> Todo List</h2>
+</div>
+
+<table class = "table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th> Description  </th>
+            <th> Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let todo of todos" >
+            <td> {{ todo.title }} </td>
+            <td> {{ todo.description }} </td>
+            <td>
+                <button (click) = "updateTodo(todo.id)" class = "btn btn-primary"> Update</button>
+                <button (click) = "deleteTodo(todo.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
